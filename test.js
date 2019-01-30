@@ -13,8 +13,8 @@ let keys = [
   0.5, '0.5',
   -1, '-1',
   +1, '+1',
-  // Math.pow(2, 32) - 1, // will not pass due to memory constraints in testing
-  Math.pow(2, 32),
+  // Math.pow(2, 32) - 2, // will not pass due to memory constraints in testing
+  Math.pow(2, 32) - 1,
   Math.PI * 2, String(Math.PI * 2), // Tau obviously
   Number.MAX_SAFE_INTEGER, String(Number.MAX_SAFE_INTEGER),
   Infinity,
@@ -40,7 +40,7 @@ let keys = [
 let array = Array(1e5).fill(true);
 
 let isWithinTestArrayBounds = function (key) {
-  return isNaN(String(key)) || key < array.length || key > Math.pow(2, 32) - 1;
+  return isNaN(String(key)) || key < array.length || key > Math.pow(2, 32) - 2;
 };
 
 describe('isArrayIndex', function () {
