@@ -1,0 +1,32 @@
+{
+  "name": "is-array-index",
+  "version": "1.0.0",
+  "description": "Test whether an input is a valid Array index.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsnickbarry/is-array-index.git"
+  },
+  "keywords": [
+    "array",
+    "index",
+    "test",
+    "key",
+    "integer",
+    "string",
+    "float",
+    "proxy"
+  ],
+  "author": "Nick Barry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsnickbarry/is-array-index/issues"
+  },
+  "homepage": "https://github.com/itsnickbarry/is-array-index#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
