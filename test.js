@@ -13,6 +13,8 @@ let keys = [
   0.5, '0.5',
   -1, '-1',
   +1, '+1',
+  // Math.pow(2, 32) - 1, // will not pass due to memory constraints in testing
+  Math.pow(2, 32),
   Math.PI * 2, String(Math.PI * 2), // Tau obviously
   Number.MAX_SAFE_INTEGER, String(Number.MAX_SAFE_INTEGER),
   Infinity,
