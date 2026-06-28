@@ -78,6 +78,11 @@ describe('isArrayIndex', function () {
       assert(isArrayIndex(BigInt(MAX_ARRAY_LENGTH), true));
       assert(isArrayIndex(BigInt(Number.MAX_SAFE_INTEGER), true));
     });
+
+    it('returns true for String object values within unrestrict bounds', function () {
+      assert(isArrayIndex(new String(MAX_ARRAY_LENGTH), true));
+      assert(isArrayIndex(new String(Number.MAX_SAFE_INTEGER), true));
+    });
   });
 
   describe('when key is a BigInt', function () {
@@ -90,6 +95,21 @@ describe('isArrayIndex', function () {
     it('returns false for invalid BigInt indices', function () {
       assert(!isArrayIndex(-1n));
       assert(!isArrayIndex(BigInt(MAX_ARRAY_LENGTH)));
+    });
+  });
+
+  describe('when key is a String object', function () {
+    it('returns true for valid String object indices', function () {
+      assert(isArrayIndex(new String('0')));
+      assert(isArrayIndex(new String('1')));
+      assert(isArrayIndex(new String(MAX_ARRAY_INDEX)));
+    });
+
+    it('returns false for invalid String object indices', function () {
+      assert(!isArrayIndex(new String('-1')));
+      assert(!isArrayIndex(new String('1.0')));
+      assert(!isArrayIndex(new String('01')));
+      assert(!isArrayIndex(new String(MAX_ARRAY_LENGTH)));
     });
   });
 });
