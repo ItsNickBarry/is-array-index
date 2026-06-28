@@ -8,6 +8,10 @@ module.exports = function (key, unrestrict) {
 
   let max = unrestrict ? Number.MAX_SAFE_INTEGER : MAX_ARRAY_INDEX;
 
+  if (typeof key === 'bigint') {
+    return key >= 0n && key <= BigInt(max);
+  }
+
   return typeof key === 'string' ?
     key === parseInt(key).toString() && key >= 0 && key <= max
   :

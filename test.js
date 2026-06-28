@@ -43,6 +43,11 @@ let keys = [
   new String('01'),
   new String('-1'),
   new String('1.0'),
+  0n,
+  1n,
+  -1n,
+  BigInt(MAX_ARRAY_LENGTH),
+  BigInt(Number.MAX_SAFE_INTEGER),
 ];
 
 let array = Array(1e5).fill(true);
@@ -67,6 +72,24 @@ describe('isArrayIndex', function () {
     it('returns true for otherwise valid values which exceed the maximum array index', function () {
       assert(isArrayIndex(MAX_ARRAY_LENGTH, true));
       assert(isArrayIndex(Number.MAX_SAFE_INTEGER, true));
+    });
+
+    it('returns true for BigInt values within unrestrict bounds', function () {
+      assert(isArrayIndex(BigInt(MAX_ARRAY_LENGTH), true));
+      assert(isArrayIndex(BigInt(Number.MAX_SAFE_INTEGER), true));
+    });
+  });
+
+  describe('when key is a BigInt', function () {
+    it('returns true for valid BigInt indices', function () {
+      assert(isArrayIndex(0n));
+      assert(isArrayIndex(1n));
+      assert(isArrayIndex(BigInt(MAX_ARRAY_INDEX)));
+    });
+
+    it('returns false for invalid BigInt indices', function () {
+      assert(!isArrayIndex(-1n));
+      assert(!isArrayIndex(BigInt(MAX_ARRAY_LENGTH)));
     });
   });
 });
