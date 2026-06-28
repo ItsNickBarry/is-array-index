@@ -38,6 +38,11 @@ let keys = [
   Symbol(),
   ...Object.getOwnPropertyNames(Array),
   ...Object.getOwnPropertyNames(Array.prototype),
+  new String('0'),
+  new String('1'),
+  new String('01'),
+  new String('-1'),
+  new String('1.0'),
 ];
 
 let array = Array(1e5).fill(true);

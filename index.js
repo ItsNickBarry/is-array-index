@@ -1,6 +1,11 @@
 const MAX_ARRAY_INDEX = Math.pow(2, 32) - 2;
 
 module.exports = function (key, unrestrict) {
+  // normalize String objects to primitive strings
+  if (key instanceof String) {
+    key = String(key);
+  }
+
   let max = unrestrict ? Number.MAX_SAFE_INTEGER : MAX_ARRAY_INDEX;
 
   return typeof key === 'string' ?
